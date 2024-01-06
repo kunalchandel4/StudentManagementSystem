@@ -21,26 +21,34 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Student {
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
-	    
-	    @Column(nullable = false)
-	    private String name;
-	    
-	    @Column(name = "date_of_birth", nullable = false)
-	    private LocalDate dateOfBirth;
-	    
-	    @Enumerated(EnumType.STRING)
-	    private Gender gender;
-	    
-	    @Column(name = "unique_student_code", nullable = false, unique = true)
-	    private String uniqueStudentCode;
-	    
-	    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-	    private List<Address> addresses = new ArrayList<>();
-	    
-	    @ManyToMany(mappedBy = "students")
-	    private List<Course> courses = new ArrayList<>();
-	    
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column(nullable = false)
+	private String name;
+
+	@Column(unique = true)
+	private String email;
+	
+	@Column(unique = true)
+	private String mobileNumber;
+	
+	private String parentsName;
+
+	@Column(name = "date_of_birth", nullable = false)
+	private LocalDate dateOfBirth;
+
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+
+	@Column(name = "unique_student_code", nullable = false, unique = true)
+	private String uniqueStudentCode;
+
+	@OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Address> addresses = new ArrayList<>();
+
+	@ManyToMany(mappedBy = "students")
+	private List<Course> courses = new ArrayList<>();
+
 }
