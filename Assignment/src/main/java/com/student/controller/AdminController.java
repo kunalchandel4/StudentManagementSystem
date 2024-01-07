@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.student.entity.Course;
+import com.student.entity.CurrentTrack;
 import com.student.entity.Student;
 import com.student.exception.CourseNotFoundException;
 import com.student.exception.StudentNotFoundException;
@@ -25,6 +26,8 @@ public class AdminController {
 
     @Autowired
     private AdminServiceImpl adminService;
+    
+    private CurrentTrack cs;
 
     @PostMapping("/admitStudent")
     public ResponseEntity<Student> admitStudent(@RequestBody Student student) throws StudentNotFoundException {
